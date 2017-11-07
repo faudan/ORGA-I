@@ -1,0 +1,7 @@
+*.png
+*.o
+cpu
+memoria
+print
+print_asinc
+reloj
