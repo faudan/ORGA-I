@@ -5,7 +5,7 @@ import pylab
 # Correspondencia directa, vario distintas lineas y guardo la hit rate
 # para cada configuracion usando la secuencia de fetchs definida en
 # benchmark.list
-dom = [1,2,4]
+dom = [1,2,4,8,16,32,64]
 res = []
 for l in dom:
     ca = CacheCorrespondenciaDirecta(memory=range(0, 2**16),

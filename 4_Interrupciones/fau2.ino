@@ -26,56 +26,29 @@ void setup() {
 	pinMode(potMotIzq, OUTPUT);
 // Interrupciones
 	attachInterrupt(digitalPinToInterrupt(lineIzq), cambioEstado, CHANGE);
-	//attachInterrupt(digitalPinToInterrupt(lineIzq), giroIzq, CHANGE);
-	//attachInterrupt(digitalPinToInterrupt(lineDer), giroDer, CHANGE);
+	
 //attachInterrupt(digitalPinToInterrupt(sensorChoque), choque, CHANGE);
 }
 /* loop del programa */
 void loop(){
 	if(!digitalRead(sensorChoque)) {
-		unsigned long tiempo = millis();
 		analogWrite(potMotIzq, 0);
 		analogWrite(potMotDer, 0);
-		while (millis() - tiempo < 3000) {}
 	}
-	if (avanzando) {
-		analogWrite(potMotIzq, 75);
-		analogWrite(potMotDer, 75);
-	}.
-	else if(girandoDer){
-		analogWrite(potMotIzq, 130);
-		analogWrite(potMotDer, 75);
-	}
-	else if (girandoIzq) {
-		analogWrite(potMotIzq, 75);
-		analogWrite(potMotDer, 130);
-	}
-}
-void giroIzq() {
-	if (avanzando){
-		girandoIzq = true;
-		avanzando = false;
-	}
-	else if (girandoIzq) {
-		girandoIzq = false;
-		avanzando = true;
-	}
-}
-void giroDer() {
-	if (avanzando) {
-		girandoDer = true;
-		avanzando = false;
-	}
-	else if (girandoDer) {
-	girandoDer = false;
-	avanzando = true;
+	else{
+		if(giro){
+			analogWrite(potMotIzq, 75);
+			analogWrite(potMotDer, 130);
+		}
+		else{
+			analogWrite(potMotIzq, 75);
+			analogWrite(potMotDer, 130);
+		}
 	}
 }
 
+
 void cambioEstado(){
-	if(girandoDer){
-		girandoDer = false;
-		girandoIzq = true;
-	}
+	giro = not giro;
 
 }

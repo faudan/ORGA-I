@@ -35,7 +35,6 @@ def RANDOM(ways, addr_tag, addr_set):
 
 
 
-# Implementame por favor!
 def LRU(ways, addr_tag, addr_set):
 	way_i=0
 	for way in ways:
@@ -43,10 +42,6 @@ def LRU(ways, addr_tag, addr_set):
 			return way_i
 		way_i+=1
 
-	# Si estoy aca es que ninguna esta vacia, tengo que desalojar alguna
-	# segun la politica FIFO, es decir tengo que sacar aquella que haya
-	# sido ingresada primero, para eso chequeo tengo que devolver la que
-	# tenga el stepFirstUse mas viejo (numericamente menor)
 	menor_step = ways[0][addr_set]['stepChange']
 	way_menor_step=0
 	i=0
